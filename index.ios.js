@@ -6,7 +6,8 @@ import {
   StyleSheet,
   Text,
   Image,
-  View
+  View,
+  ScrollView
 } from 'react-native';
 
 let PhotoEntry = require('./components/photoEntry');
@@ -37,11 +38,13 @@ class flickrgramReactNative extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {this.state.photos.map((photo) => {
-          return (
-            <PhotoEntry key={photo.id} photo={photo}/>
-          )
-        })}
+        <ScrollView ref="scrollView" style={styles.scrollView}>
+          {this.state.photos.map((photo) => {
+            return (
+              <PhotoEntry key={photo.id} photo={photo}/>
+            )
+          })}
+        </ScrollView>
       </View>
     );
   }
@@ -68,6 +71,9 @@ const styles = StyleSheet.create({
     flex: 1,
     width: 400, 
     height: 400
+  },
+  scrollView: {
+    flex: 1
   }
 });
 
