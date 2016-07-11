@@ -10,7 +10,7 @@ import {
   ScrollView
 } from 'react-native';
 
-let PhotoEntry = require('./components/photoEntry');
+import { PhotoEntry } from './components/photoEntry'
 
 class flickrgramReactNative extends Component {
 
@@ -66,11 +66,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
-  },
-  photo: {
-    flex: 1,
-    width: 400, 
-    height: 400
   },
   scrollView: {
     flex: 1

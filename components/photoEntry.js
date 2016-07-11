@@ -8,18 +8,33 @@ import {
   View
 } from 'react-native';
 
-let PhotoEntry = ({photo}) => {
+export let PhotoEntry = ({photo}) => {
   return (
-    <Image style={styles.photo} source={{uri: photo.url}}/>
+    <View style={styles.photoEntry}>
+      <View>
+        <Image resizeMode="cover" style={styles.photo} source={{uri: photo.url}}/>
+      </View>
+      <View>
+        <Text style={styles.description}> {photo.description} </Text>
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  photo: {
+  photoEntry: {
     flex: 1,
-    width: 400, 
-    height: 400
+    borderWidth: 0.5,
+    borderColor: 'black'
+  },
+  photo: {
+    flex: 9,
+    height:250,
+    width: 400,
+    borderWidth: 0.5,
+    borderColor: 'black'
+  },
+  description: {
+    flex: 1
   }
 });
-
-module.exports = PhotoEntry
