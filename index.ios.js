@@ -9,6 +9,8 @@ import {
   View
 } from 'react-native';
 
+let PhotoEntry = require('./components/photoEntry');
+
 class flickrgramReactNative extends Component {
 
   constructor(props) { 
@@ -37,7 +39,7 @@ class flickrgramReactNative extends Component {
       <View style={styles.container}>
         {this.state.photos.map((photo) => {
           return (
-            <Image style={styles.photo} key={photo.id} source={{uri: photo.url}}/>
+            <PhotoEntry key={photo.id} photo={photo}/>
           )
         })}
       </View>
