@@ -53,7 +53,9 @@ class flickrgramReactNative extends Component {
       endpoint: 'tags',
       query: query
     }
-    this.serverConnect(options);
+    if (query) {
+      this.serverConnect(options);
+    }
   }
 
   setText(val) {

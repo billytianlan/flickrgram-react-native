@@ -13,7 +13,7 @@ export let SearchBar = (props) => {
   return(
     <View style={styles.searchBar}>
       <TextInput style={styles.searchBarInput} placeholder="Search Pics" value={props.text} onChangeText={(text) => {props.setText(text)}}/>
-      <TouchableHighlight style={styles.button} onPress={props.searchTags}> 
+      <TouchableHighlight underlayColor={'gray'} style={styles.button} onPress={props.searchTags}> 
         <Text> Search </Text>
       </TouchableHighlight>
     </View>
