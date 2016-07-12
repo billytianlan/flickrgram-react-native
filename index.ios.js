@@ -7,7 +7,8 @@ import {
   Text,
   Image,
   View,
-  ScrollView
+  ScrollView,
+  TextInput
 } from 'react-native';
 
 import { PhotoEntry } from './components/photoEntry'
@@ -38,6 +39,9 @@ class flickrgramReactNative extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <View style={styles.searchBar}>
+          <TextInput style={styles.searchBarInput} placeholder="Search Pics"/>
+        </View>
         <ScrollView ref="scrollView" style={styles.scrollView}>
           {this.state.photos.map((photo) => {
             return (
@@ -68,7 +72,15 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   scrollView: {
+    flex: 8
+  },
+  searchBar: {
     flex: 1
+  },
+  searchBarInput: { 
+    height: 40, 
+    width: 350,
+    marginTop: 20
   }
 });
 
