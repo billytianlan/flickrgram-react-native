@@ -12,7 +12,8 @@ import {
   TouchableHighlight
 } from 'react-native';
 
-import { PhotoEntry } from './components/photoEntry'
+import { PhotoEntry } from './components/photoEntry';
+import { SearchBar } from './components/searchBar';
 
 class flickrgramReactNative extends Component {
 
@@ -41,12 +42,7 @@ class flickrgramReactNative extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.searchBar}>
-          <TextInput style={styles.searchBarInput} placeholder="Search Pics" value={this.state.text} onChangeText={(text) => {this.setState({text: text})}}/>
-          <TouchableHighlight style={styles.button} onPress={this.searchTags.bind(this)}> 
-            <Text> Search </Text>
-          </TouchableHighlight>
-        </View>
+        <SearchBar text={this.state.text} searchTags={this.searchTags.bind(this)} setText={this.setText.bind(this)} />
         <ScrollView ref="scrollView" style={styles.scrollView}>
           {this.state.photos.map((photo) => {
             return (
@@ -70,6 +66,12 @@ class flickrgramReactNative extends Component {
     })
   }
 
+  setText(val) {
+    this.setState({
+      text: val
+    })
+  }
+
 }
 
 const styles = StyleSheet.create({
@@ -79,36 +81,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
   scrollView: {
     flex: 9
-  },
-  searchBar: {
-    flex: 2
-  },
-  searchBarInput: { 
-    height: 40, 
-    width: 350,
-    marginTop: 20
-  },
-    button: {
-    height: 40, 
-    width: 350,
-    backgroundColor: '#48BBEC',
-    borderColor: '#48BBEC',
-    borderRadius: 8,
-    borderWidth: 1,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
   }
 });
 
