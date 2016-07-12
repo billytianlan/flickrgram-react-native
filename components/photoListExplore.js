@@ -16,7 +16,12 @@ export class PhotoListExplore extends Component {
   render() {
     return (
       <View style={styles.exploreView}>
-        <SearchBar text={this.props.text} searchTags={this.props.searchTags} setText={this.props.setText} />
+        <SearchBar 
+          text={this.props.text} 
+          searchTags={this.props.searchTags} 
+          setText={this.props.setText}  
+          navigator={this.props.navigator}        
+        />
         <ScrollView ref="scrollView" style={styles.scrollView}>
           {this.props.photos.map((photo) => <PhotoEntry key={photo.id} photo={photo}/>)}
         </ScrollView>
@@ -25,7 +30,7 @@ export class PhotoListExplore extends Component {
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
   exploreView: {
     flex: 1,
     justifyContent: 'center',
@@ -35,5 +40,5 @@ const styles = {
   scrollView: {
     flex: 9
   }
-}
+})
 
