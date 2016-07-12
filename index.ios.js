@@ -5,15 +5,17 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  Image,
   View,
   ScrollView,
-  TextInput,
-  TouchableHighlight
+  Navigator
 } from 'react-native';
 
-import { PhotoEntry } from './components/photoEntry';
 import { SearchBar } from './components/searchBar';
+import { PhotoListExplore } from './components/photoListExplore';
+
+const ROUTES = {
+  home: PhotoListExplore
+}
 
 class flickrgramReactNative extends Component {
 
@@ -32,18 +34,25 @@ class flickrgramReactNative extends Component {
     this.serverConnect(options);
   }
 
+  renderScene(route, navigator) {
+    let Component = ROUTES[route.name];
+    return <Component 
+      route={route} 
+      navigator={navigator} 
+      photos={this.state.photos} 
+      text={this.state.text} 
+      searchTags={this.searchTags.bind(this)}
+      setText={this.setText.bind(this)}
+    />;
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <SearchBar text={this.state.text} searchTags={this.searchTags.bind(this)} setText={this.setText.bind(this)} />
-        <ScrollView ref="scrollView" style={styles.scrollView}>
-          {this.state.photos.map((photo) => {
-            return (
-              <PhotoEntry key={photo.id} photo={photo}/>
-            )
-          })}
-        </ScrollView>
-      </View>
+      <Navigator style={styles.container}
+        initialRoute={{name: 'home'}}
+        renderScene={this.renderScene.bind(this)}
+        configureSecene={() => Navigator.SceneConfigs.FloatFromRight }
+      />
     );
   }
 
@@ -83,12 +92,7 @@ class flickrgramReactNative extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  scrollView: {
-    flex: 9
+    backgroundColor: '#F5FCFF'
   }
 });
 
