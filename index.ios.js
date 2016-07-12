@@ -45,6 +45,7 @@ class flickrgramReactNative extends Component {
       text={this.state.text} 
       searchTags={this.searchTags.bind(this)}
       setText={this.setText.bind(this)}
+      renderMapData={this.renderMapData.bind(this)}
     />;
   }
 
@@ -72,6 +73,12 @@ class flickrgramReactNative extends Component {
   setText(val) {
     this.setState({
       text: val
+    })
+  }
+
+  renderMapData(data) {
+    this.setState({
+      photos: data
     })
   }
 

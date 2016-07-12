@@ -31,7 +31,7 @@ export class MapExplore extends Component {
           annotations={[this.state.pin]}
         >
         </MapView>
-        <TouchableHighlight style={styles.button} onPress={this.mapSearch.bind(this)}>
+        <TouchableHighlight style={styles.button} onPress={() => { this.mapSearch(this.props.renderMapData) }}>
           <Text> Search </Text>
         </TouchableHighlight>
       </View>
@@ -48,8 +48,13 @@ export class MapExplore extends Component {
     console.log(region);
   }
 
-  mapSearch() {
-    this.props.navigator.push({name: 'home'})
+  mapSearch(renderMapData) {
+    fetch(`http://localhost:3000/api/photos/map/?lat=${this.state.pin.latitude}&lon=${this.state.pin.longitude}`)
+    .then((response) => response.json())
+    .then((responseJSON) => {
+      renderMapData(responseJSON)
+      this.props.navigator.push({name: 'home'})
+    })
   }
 }
 
