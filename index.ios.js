@@ -12,9 +12,11 @@ import {
 
 import { SearchBar } from './components/searchBar';
 import { PhotoListExplore } from './components/photoListExplore';
+import { MapExplore } from './components/mapExplore';
 
 const ROUTES = {
-  home: PhotoListExplore
+  home: PhotoListExplore,
+  map: MapExplore
 }
 
 class flickrgramReactNative extends Component {
