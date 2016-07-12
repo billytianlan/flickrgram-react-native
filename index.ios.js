@@ -60,14 +60,14 @@ class flickrgramReactNative extends Component {
   searchTags() {
     console.log('the searchining beings');
     let query = this.state.text
-    fetch(`http://localhost:3000/api/photos/?query=${query}`)
-      .then((response) => resonse.json())
-      .then((responseJSON)) => {
-        console.log(responseJSON);
-        this.setState({
-          photos: responseJSON
-        })
-      }
+    fetch(`http://localhost:3000/api/tags/?query=${query}`)
+    .then((response) => response.json())
+    .then((responseJSON) => {
+      console.log(responseJSON);
+      this.setState({
+        photos: responseJSON
+      })
+    })
   }
 
 }
