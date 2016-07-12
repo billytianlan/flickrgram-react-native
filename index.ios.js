@@ -86,9 +86,9 @@ class flickrgramReactNative extends Component {
     fetch(`http://localhost:3000/api/${options.endpoint}/?query=${options.query}`)
       .then((response) => response.json())
       .then((responseJSON) => {
-        console.log(responseJSON);
         this.setState({
-          photos: responseJSON
+          photos: responseJSON,
+          text: ''
         })
       })
       .catch((err) => {

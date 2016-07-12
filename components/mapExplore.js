@@ -45,7 +45,6 @@ export class MapExplore extends Component {
         longitude: region.longitude
       }
     })
-    console.log(region);
   }
 
   mapSearch(renderMapData) {
