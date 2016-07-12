@@ -26,17 +26,10 @@ class flickrgramReactNative extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/api/photos')
-      .then((response) => response.json())
-      .then((responseJSON) => {
-        console.log(responseJSON);
-        this.setState({
-          photos: responseJSON
-        })
-      })
-      .catch((err) => {
-        throw(err);
-      });
+    let options = {
+      endpoint: 'photos'
+    }
+    this.serverConnect(options);
   }
 
   render() {
@@ -53,23 +46,34 @@ class flickrgramReactNative extends Component {
       </View>
     );
   }
+
   searchTags() {
-    console.log('the searchining beings');
     let query = this.state.text
-    fetch(`http://localhost:3000/api/tags/?query=${query}`)
-    .then((response) => response.json())
-    .then((responseJSON) => {
-      console.log(responseJSON);
-      this.setState({
-        photos: responseJSON
-      })
-    })
+    let options = {
+      endpoint: 'tags',
+      query: query
+    }
+    this.serverConnect(options);
   }
 
   setText(val) {
     this.setState({
       text: val
     })
+  }
+
+  serverConnect(options) {
+    fetch(`http://localhost:3000/api/${options.endpoint}/?query=${options.query}`)
+      .then((response) => response.json())
+      .then((responseJSON) => {
+        console.log(responseJSON);
+        this.setState({
+          photos: responseJSON
+        })
+      })
+      .catch((err) => {
+        throw(err);
+      });
   }
 
 }
