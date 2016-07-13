@@ -10,13 +10,14 @@ import {
   Navigator
 } from 'react-native';
 
-import { SearchBar } from './components/searchBar';
 import { PhotoListExplore } from './components/photoListExplore';
 import { MapExplore } from './components/mapExplore';
+import { CameraView } from './components/cameraView';
 
 const ROUTES = {
   home: PhotoListExplore,
-  map: MapExplore
+  map: MapExplore,
+  camera: CameraView
 }
 
 class flickrgramReactNative extends Component {

@@ -17,7 +17,7 @@ export let SearchBar = (props) => {
         <TouchableHighlight underlayColor={'gray'} style={styles.button} onPress={props.searchTags}> 
           <Text> Search </Text>
         </TouchableHighlight>
-        <TouchableHighlight underlayColor={'gray'} style={styles.button} onPress={() => {props.navigator.push({name: 'map'})}}> 
+        <TouchableHighlight underlayColor={'gray'} style={styles.button} onPress={() => {props.navigator.push({name: 'camera'})}}> 
           <Text> Map </Text>
         </TouchableHighlight>
       </View>
